@@ -1,0 +1,57 @@
+div.login{
+	width: 415px;
+	border:1px solid #f69c00;
+	border-radius: 5px;
+	float: right;
+	margin-right: 200px;
+	margin-top: 150px;
+}
+div{
+	box-sizing: border-box;
+	font-size: 14px;
+}
+div .line{
+	margin:30px;
+}
+.login_img .qq{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(../picture/title/sprite.png) 96px 95px;
+}
+.login_img .wx{
+    display:inline-block;
+    width: 30px;
+    height: 30px;
+    background: url(../picture/title/sprite.png) 31px 95px;
+}
+.login_img{
+	width: 350px; 	
+	position: relative;
+	display: flex;
+	justify-content: space-around;
+}
+input#uname,input#upwd{
+	width: 340px;
+	height: 40px;
+	line-height: 46px;
+	border: 1px solid #3a4056;
+    border-radius: 2px;	
+    padding-left: 10px;
+}
+button{
+	width: 350px;
+    height: 40px;
+	border-radius: 2px;
+	border: none;
+	outline: none;
+	background: #f69c00;
+}
+.null{
+	display: inline-block;
+	width: 210px;
+	height: 10px;	
+}
+.line4 a{
+	color: #f69c00;
+}
