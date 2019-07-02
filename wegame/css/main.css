@@ -38,6 +38,9 @@ body {
     line-height: 50px;
     text-align: center;
 }
+.header_nav_ft{
+    position: relative;
+}
 .header_nav_ft input {
     margin-top: 10px;
     margin-left: 100px;
@@ -58,7 +61,7 @@ body {
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     position: absolute;
-    right:224px;top:110px;
+    right:-49px;top:10px;
     background: #ffe37f;
 }
 .header_nav_ft a i {
