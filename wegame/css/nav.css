@@ -1,0 +1,70 @@
+.header_nav {
+    height: 50px;
+    display: flex;
+    background: #fefefe;
+}
+
+.header_nav_hd {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 300px;
+    margin-left: 200px;
+}
+
+.header_nav_bd {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header_nav_hd a {
+    display: block;
+    width: 100px;
+    font-size: 13px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 50px;
+    text-align: center;
+}
+
+.header_nav_bd a {
+    display: block;
+    width: 100px;
+    font-size: 13px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 50px;
+    text-align: center;
+}
+.header_nav_ft{
+    position: relative;
+}
+.header_nav_ft input {
+    margin-top: 10px;
+    margin-left: 100px;
+    padding: 3px 25px 3px 15px;
+    width: 150px;
+    height: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    outline: none;
+    border: 1px solid #f69c00;
+    line-height: 50px;
+}
+.header_nav_ft a{
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    border:1px solid #f69c00; 
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: absolute;
+    right:-49px;top:10px;
+    background: #ffe37f;
+}
+.header_nav_ft a i {
+    width:20px;height:22px;
+    background: url(../picture/title/search.png) no-repeat;
+    position: absolute;
+    top:3px;
+    left:11px;
+}

@@ -5,6 +5,7 @@ body {
 .header_nav {
     height: 50px;
     display: flex;
+    background: #fefefe;
 }
 
 .header_nav_hd {
@@ -78,9 +79,9 @@ body {
 }
 
 .header_pic img {
+    width: 100%;
     position: absolute;
-    top: -40px;
-    left: -230px;
+    top:-10px;
 }
 
 .carousel-control-prev,
@@ -110,12 +111,13 @@ body {
     margin-right: 50px;
     margin-top: 15px;
 }
-
+.nav1{
+    float: left;
+}
 .body_nav {
     border: 1px solid #e2e3e5;
     width: 160px;
     height: 160px;
-    float: left;
     margin-left: 50px;
     margin-top: 50px;
 }
@@ -140,7 +142,6 @@ body {
     border: 1px solid #e2e3e5;
     border-radius: 5px;
     width: 160px;
-    float: left;
     margin-left: 50px;
     margin-top: 100px;
 }
