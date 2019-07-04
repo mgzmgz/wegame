@@ -79,6 +79,7 @@ body {
 }
 
 .header_pic img {
+    display: block;
     width: 100%;
     position: absolute;
     top:-10px;
@@ -106,10 +107,9 @@ body {
     background-color: #f69c00;
 }
 
-.container {
-    float: right;
-    margin-right: 50px;
-    margin-top: 15px;
+.container{
+    position: absolute;
+    left: 18%
 }
 .nav1{
     float: left;
@@ -167,10 +167,9 @@ body {
     color: #757575;
     text-decoration: none;
 }
-
 .body_top h3 {
     display: block;
-    margin-left: 250px;
+    margin-left: 20%;
     margin-top: 520px;
     margin-bottom: 40px;
 }
@@ -218,7 +217,7 @@ body {
 
 .h3 {
     display: block;
-    margin-left: 250px;
+    margin-left: 20%;
     margin-top: 50px;
     margin-bottom: 40px;
 }
