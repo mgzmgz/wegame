@@ -1,3 +1,6 @@
+.body_game ul{
+    background: #fff;
+}
 li{
     display: inline-block;
     width: 700px;
@@ -34,7 +37,8 @@ li{
 }
 .d3{
     margin:50px auto;
-    color:#333
+    color:#333;
+    margin-left: -10px
 }
 .nav {
     border: 1px solid #e2e3e5;
@@ -43,6 +47,7 @@ li{
     margin-right:10%;
     margin-top: 100px;
     height: 420px;
+    background: #fff;
 }
 
 .nav h3 {
@@ -75,4 +80,63 @@ li{
 }
 .body_game{
     margin-left: 10%
+}
+.btn{
+    display:block;
+    width: 20px;
+    height: 20px;
+    background: url(../picture/title/left.png) no-repeat 5px 5px;
+}
+.btn1{
+    display:block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    color: #666;
+}
+.btn2{
+    display:block;
+    width: 20px;
+    height: 20px;
+    background: url(../picture/title/right.png) no-repeat 5px 5px;
+    
+}
+.btn1:hover{
+    background:rgba(255,200,0,.5);
+}
+ul.go{
+    display: flex;
+    width: 25%;
+}
+.change{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15%;
+}
+span{
+    color:#666;
+    margin-left: 3%
+}
+span input{
+    width: 30px;
+    height: 20px;
+    border-radius: 2px;
+    outline: 0;
+    border: 1px solid #aaa;
+    padding-left: 10px
+}
+.change button{
+    color: #666;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: 0;
+    padding: 3px;
+    background: #eee;
+    margin-left: 5%
+}
+body{
+    background: url(../picture/title/bg.jpg)
 }
