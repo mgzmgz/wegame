@@ -31,14 +31,87 @@ video{
 li{
     display: inline-block;
     width: 180px;
-    height: 30px;
+    height: 40px;
     font-size: 14px;
     color: #3c3c3c;
+    text-align: center;
+    background: #fff;
+    line-height: 40px;
+    margin-bottom: 1%;
+    border-radius: 5px
 }
 ul{
     display: block;
-    margin-left: 80px
+    margin-left: 50px;
 }
 .nav{
-    margin-top:5%
+    margin-top:4%;
+}
+p{
+    display:block;
+    margin-left: 5rem;
+    margin-top:1.5rem;
+}
+p+button{
+    display: inline-block;
+    width: 10rem;
+    height: 2.5rem;
+    margin-left:5rem;
+    margin-top:1.5rem;
+    background: #ff8d13;
+    border:none;
+    outline:none;
+    border-radius: 5rem;
+    color:#fff
+}
+button{
+    display: inline-block;
+    width: 5rem;
+    height: 2.5rem;
+    margin-left:2.5rem;
+    border: 1px solid #e2e2e2;
+    outline:none;
+    border-radius: 1.5rem;
+    background: #fff7e4;
+    color:#3c3c3c
+}
+label{
+    display:block;
+    margin-left:4rem;
+    margin-top:1.5rem;
+    font-size:5px;
+    color:#757575
+}
+label a{
+    color:#757575
+}
+h2{
+    display: block;
+    margin-left:10%;
+    margin-top:2%
+}
+.body{
+    margin-left:5%;
+    width: 60%;
+}
+.main{
+    display: flex
+}
+h3{
+    display: block;
+    margin-left:10%;
+    margin-top:30%;
+    margin-bottom: 5%
+}
+tr{
+    line-height: 50px;
+    color: #3c3c3c;
+    text-align: center;
+    background:#fff;
+}
+td{
+    border-radius: 4px
+}
+.tit{
+    width: 6rem
 }
