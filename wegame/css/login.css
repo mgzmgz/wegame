@@ -55,6 +55,7 @@ button{
 }
 .line4 a{
 	color:#222;
+	text-decoration: none
 }
 body{
 	background: url(../picture/title/bg1.jpg);

@@ -8,3 +8,7 @@ div{
     background: #0d0d0d;
     padding: 2rem;
 }
+body{
+    margin: 0;
+    padding: 0;
+}
