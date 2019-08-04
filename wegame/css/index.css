@@ -16,7 +16,7 @@ div.pic{
    width:100%;
 }
 .body_top{
-     margin-left:230px;
+     margin-left:18%;
 }
 .body_top>ul{
     display: flex;
@@ -56,7 +56,7 @@ div.pic{
 }
 .body_middle{
     display: flex;
-    margin-left:280px
+    margin-left:20%
 }
 .body_middle>div.body_middle_top{
    margin-right:20px
@@ -126,7 +126,7 @@ div.pic{
     width: 320px
 }
 .body_update{
-    margin-left:280px
+    margin-left:20%
 }
 .body_update>ul{
     display: flex;
@@ -153,7 +153,7 @@ div.pic{
     height: 80px;
 }
 .body_footer{
-    margin-left:280px
+    margin-left:20%
 }
 .d1{
     display: flex;
