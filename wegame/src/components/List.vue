@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/list.css">
-</head>
-
-<body>
-    <div class="body_game">
+<template>
+    <div class="body">
+        <div class="body_game">
         <ul>
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/LOL.jpg" alt="">
+                        <img src="../assets/picture/game/LOL.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -34,7 +24,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/DNF.jpg" alt="">
+                        <img src="../assets/picture/game/DNF.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -53,7 +43,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/CF.jpg" alt="">
+                        <img src="../assets/picture/game/CF.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -72,7 +62,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/qqfeiche.jpg" alt="">
+                        <img src="../assets/picture/game/qqfeiche.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -91,7 +81,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/NBA2K.jpg" alt="">
+                        <img src="../assets/picture/game/NBA2K.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -110,7 +100,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/sanguosha.jpg" alt="">
+                        <img src="../assets/picture/game/sanguosha.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -129,7 +119,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/miaosikuaipao.jpg" alt="">
+                        <img src="../assets/picture/game/miaosikuaipao.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -148,7 +138,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/zhongguoshijiazhang.jpg" alt="">
+                        <img src="../assets/picture/game/zhongguoshijiazhang.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -167,7 +157,7 @@
             <li>
                 <div>
                     <a href="#">
-                        <img src="../picture/game/jianwang3.jpg" alt="">
+                        <img src="../assets/picture/game/jianwang3.jpg" alt="">
                     </a>
                 </div>
                 <div class="d2">
@@ -214,6 +204,135 @@
         </span>
         <button>确定</button>
     </div>
-</body>
+    </div>
+</template>
+<script>
+export default {
+    data(){
+        return{}
+    }
+}
+</script>
+<style scoped>
+.body_game ul{
+    background: #fff;
+}
+a{
+    text-decoration: none
+}
+li{
+    display: inline-block;
+    width: 700px;
+    display: flex;
+}
+ul{
+    margin:0;
+    padding: 20px 0 0 20px
+}
+ul img{
+    width: 180px;
+    display: block;
+}
+.d2{
+   width: 300px;
+   height: 100px;
+   display: flex;
+   flex-direction:column;
+   justify-content: space-around;
+   margin-left:30px;
+}
+.d2 h3{
+    font-size:18px;
+    color:#3c3c3c;
+    margin:0
+}
+.d2 p{
+    font-size:15px;
+    color: #3c3c3c;
+    margin:0
+}
+.title p{
+    display: inline-block;
+    border: 1px solid rgba(100,100,100,0.5);
+    font-size: 12px;
+    color: #3c3c3c; 
+    padding:1px 5px;
+    border-radius: 3px
+}
+.d3{
+    margin:50px auto;
+    color:#333;
+}
+.d3 p{
+    margin:0
+}
 
-</html>
+.body_game{
+    margin-left: 30%;
+    width:700px
+}
+.btn{
+    display:block;
+    width: 20px;
+    height: 20px;
+    background: url(../assets/picture/title/left.png) no-repeat 5px 5px;
+}
+.btn1{
+    display:block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    color: #666;
+}
+.btn2{
+    display:block;
+    width: 20px;
+    height: 20px;
+    background: url(../assets/picture/title/right.png) no-repeat 5px 5px;
+    
+}
+.btn1:hover{
+    background:rgba(255,200,0,.5);
+}
+ul.go{
+    display: flex;
+    width: 25%;
+}
+.change{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+}
+span{
+    display: block;
+    color:#666;
+    margin-left: 3%;
+    margin-top:19px
+}
+span input{
+    width: 30px;
+    height: 20px;
+    border-radius: 2px;
+    outline: 0;
+    border: 1px solid #aaa;
+    padding-left: 10px
+}
+.change button{
+    width: 50px;
+    height:25px;
+    margin-top:19px;
+    color: #666;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: 0;
+    padding: 3px;
+    background: #eee;
+    margin-left: 5%
+}
+div.body{
+    background: url(../assets/picture/title/bg.jpg)
+}
+</style>
