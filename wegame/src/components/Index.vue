@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <div class="pic">
-      <a href="#">
-        <img src="../assets/picture/game_title/sanguosha_s.jpg" alt />
-      </a>
+  <div :style="bgImg">
+    <my-header></my-header>
+    <div class="pic" @mouseenter="iShow()" @mouseleave="iHidden()">
+      <router-link to>
+        <img v-show="show" src="../assets/picture/game_title/sanguosha_s.jpg" />
+        <img v-show="!show" src="../assets/picture/game_title/sanguosha_b.jpg" />
+      </router-link>
+      <i :class="active==true?'el-icon-arrow-down':'el-icon-arrow-up'" v-show="show2" @click="down"></i>
     </div>
+    <my-nav></my-nav>
+    <my-carousel></my-carousel>
     <div class="body_top">
+      <h1>热点预告</h1>
       <ul>
         <div class="button">
           <img src="../assets/picture/title/left.png" alt />
@@ -329,20 +335,47 @@
         <img src="../assets/picture/title/up.png" alt />
       </a>
     </div>
+    <my-footer></my-footer>
   </div>
 </template>
 <script>
+import MyHeader from "./Header.vue";
+import MyNav from "./Nav.vue";
+import MyCarousel from "./Carousel.vue";
+import MyFooter from "./Footer.vue";
 export default {
   data() {
-    return {};
+    return {
+      bgImg: {
+        backgroundImage:
+          "url(" + require("../assets/picture/title/bg.jpg") + ")"
+      },
+      show: true,
+      show2: false,
+      active: true
+    };
+  },
+  components: {
+    MyHeader: MyHeader,
+    MyNav: MyNav,
+    MyCarousel: MyCarousel,
+    MyFooter: MyFooter
+  },
+  methods: {
+    down() {
+      this.show = !this.show;
+      this.active = !this.active;
+    },
+    iShow() {
+      this.show2 = !this.show2;
+    },
+    iHidden() {
+      this.show2 = !this.show2;
+    }
   }
 };
 </script>
 <style scoped>
-body {
-  background: url(../assets/picture/title/bg.jpg);
-  margin: 0;
-}
 a {
   text-decoration: none;
 }
@@ -351,13 +384,28 @@ li {
 }
 div.pic {
   overflow: hidden;
+  position: relative;
 }
-.pic > a > img {
-  height: 100px;
+.pic i {
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 1%;
+  background: #fff;
+  margin-left: -20px;
+  padding: 2px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.pic img {
   width: 100%;
 }
 .body_top {
   margin-left: 18%;
+}
+.body_top h1 {
+  display: block;
+  margin-left: 4%;
 }
 .body_top > ul {
   display: flex;
@@ -546,8 +594,8 @@ div.pic {
 }
 .side img {
   border: 1px solid #ffe37f;
-  border-radius: 50%;
   background: #f69c00;
+  border-radius: 50%;
   display: block;
   padding: 0.25rem;
   margin-bottom: 1rem;

@@ -38,7 +38,7 @@
 export default {
   data() {
     return {};
-  }
+  },
 };
 </script>
 <style scoped>
@@ -128,6 +128,9 @@ header > .header_head > .header_ft > span {
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
 }
+.header_nav_hd li:hover{
+  color:#f69c00
+}
 .header_nav_bd li {
   cursor: pointer;
   list-style-type: none;
@@ -135,6 +138,9 @@ header > .header_head > .header_ft > span {
   font-size: 13px;
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
+}
+.header_nav_bd li:hover{
+  color:#f69c00
 }
 .header_nav_ft {
   position: relative;

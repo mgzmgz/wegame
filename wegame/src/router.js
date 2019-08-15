@@ -8,6 +8,7 @@ import List from './components/List.vue'
 import Detail from './components/Detail.vue'
 import Login from './components/Login.vue'
 import Reg from './components/Reg.vue'
+import Carousel from './components/Carousel.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -20,5 +21,6 @@ export default new Router({
     { path: '/Detail', component: Detail },
     { path: '/Login', component: Login },
     { path: '/Reg', component: Reg },
+    { path: '/Carousel', component: Carousel },
   ]
 })

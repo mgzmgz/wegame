@@ -1,5 +1,4 @@
 <template>
-<body>
   <div class="login">
     <div class="line">
       <input type="text" name="uname" id="uname" placeholder="用户名" />
@@ -20,7 +19,6 @@
       <a href="#" class="wx"></a>
     </div>
   </div>
-</body>
 </template>
 <script>
 export default {
@@ -30,17 +28,14 @@ export default {
 };
 </script>
 <style scoped>
-body {
-  background-image: url(../assets/picture/title/bg1.jpg);
-  background-size: cover;
-}
 div.login {
+  position: fixed;
+  top:50%;left: 50%;
+  margin-left: -175.5px;
+  margin-top: -180px;
   width: 315px;
-  border: 1px solid rgba(246, 156, 0);
+  border: 1px solid rgba(246, 156, 0,0.5);
   border-radius: 5px;
-  float: right;
-  margin-right: 200px;
-  margin-top: 150px;
   background: rgba(245, 245, 245, 0.2);
 }
 div {
@@ -84,6 +79,7 @@ button {
   border: none;
   outline: none;
   background: #f69c00;
+  cursor: pointer;
 }
 .null {
   display: inline-block;

@@ -36,5 +36,8 @@ div{
     background: #0d0d0d;
     padding: 2rem;
 }
-
+footer{
+    background: #111;
+    padding: 20px;
+}
 </style>
