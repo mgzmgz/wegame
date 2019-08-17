@@ -211,9 +211,9 @@
   </div>
 </template>
 <script>
-import MyHeader from "./Header.vue";
-import MyNav from "./Nav.vue";
-import MyFooter from "./Footer.vue";
+import MyHeader from "../components/Header.vue";
+import MyNav from "../components/Nav.vue";
+import MyFooter from "../components/Footer.vue";
 export default {
   data() {
     return {};

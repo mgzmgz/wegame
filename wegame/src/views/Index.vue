@@ -12,44 +12,46 @@
     <my-carousel></my-carousel>
     <div class="body_top">
       <h1>热点预告</h1>
-      <ul>
-        <div class="button">
-          <img src="../assets/picture/title/left.png" alt />
-        </div>
-        <li>
-          <a href="#">
-            <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-          </a>
-          <p>喵斯快跑</p>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-          </a>
-          <p>喵斯快跑</p>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-          </a>
-          <p>喵斯快跑</p>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-          </a>
-          <p>喵斯快跑</p>
-        </li>
-        <li>
-          <a href="#">
-            <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-          </a>
-          <p>喵斯快跑</p>
-        </li>
-        <div class="button">
-          <img src="../assets/picture/title/right.png" alt />
-        </div>
-      </ul>
+      <div class="button left">
+        <img src="../assets/picture/title/left.png" alt />
+      </div>
+      <div class="button right">
+        <img src="../assets/picture/title/right.png" alt />
+      </div>
+      <div class="list">
+        <ul>
+          <li>
+            <a href="#">
+              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
+            </a>
+            <p>喵斯快跑</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
+            </a>
+            <p>喵斯快跑</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
+            </a>
+            <p>喵斯快跑</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
+            </a>
+            <p>喵斯快跑</p>
+          </li>
+          <li>
+            <a href="#">
+              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
+            </a>
+            <p>喵斯快跑</p>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="body_middle">
@@ -328,7 +330,7 @@
     </div>
 
     <div class="side">
-      <a href="#">
+      <a href="javascript:;">
         <img src="../assets/picture/title/shopping.png" alt />
       </a>
       <a href="#">
@@ -339,10 +341,10 @@
   </div>
 </template>
 <script>
-import MyHeader from "./Header.vue";
-import MyNav from "./Nav.vue";
-import MyCarousel from "./Carousel.vue";
-import MyFooter from "./Footer.vue";
+import MyHeader from "../components/Header.vue";
+import MyNav from "../components/Nav.vue";
+import MyCarousel from "../components/Carousel.vue";
+import MyFooter from "../components/Footer.vue";
 export default {
   data() {
     return {
@@ -371,7 +373,17 @@ export default {
     },
     iHidden() {
       this.show2 = !this.show2;
+    },
+    handleScroll() {
+      var scrollTop =
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        window.pageYOffset;
+      console.log(scrollTop);
     }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
   }
 };
 </script>
@@ -402,41 +414,58 @@ div.pic {
 }
 .body_top {
   margin-left: 18%;
+  position: relative;
 }
 .body_top h1 {
   display: block;
   margin-left: 4%;
 }
-.body_top > ul {
-  display: flex;
-  justify-content: space-between;
-  width: 1100px;
+.body_top .list {
+  position: relative;
+  left: 38px;
+  overflow: hidden;
+  height: 300px;
+  width: 990px;
+}
+.body_top ul {
+  display: inline-block;
+  position: absolute;
+  height: 300px;
   overflow: hidden;
   padding: 0;
 }
-.body_top > ul > li {
-  display: block;
+.body_top ul li {
+  display: inline-block;
   width: 184px;
   height: 300px;
+  margin: 0 7px 0 7px;
+  overflow: hidden;
 }
-.body_top > ul > .button {
+
+.body_top .button {
+  display: block;
   width: 30px;
   height: 68px;
-  margin: 91px 0 91px 0;
+  margin: 0 0 140px 0;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 2px;
   cursor: pointer;
+  position: absolute;
+  top: 185px;
 }
-.body_top > ul > .button > img {
+.body_top .right {
+  right: 100px;
+}
+.body_top .button img {
   display: block;
   margin: 28px auto 28px;
 }
-.body_top > ul > li > a > img {
+.body_top ul li a img {
   width: 184px;
   height: 242px;
   text-align: center;
 }
-.body_top > ul > li > p {
+.body_top ul li p {
   display: block;
   text-align: center;
   background: #fff;
@@ -602,7 +631,7 @@ div.pic {
 }
 .side {
   position: fixed;
-  right: 5px;
+  right: 30px;
   top: 600px;
 }
 div.main {
