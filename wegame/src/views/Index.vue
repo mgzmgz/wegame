@@ -333,8 +333,8 @@
       <a href="javascript:;">
         <img src="../assets/picture/title/shopping.png" alt />
       </a>
-      <a href="#">
-        <img src="../assets/picture/title/up.png" alt />
+      <a href="javascript:;">
+        <img v-show="backFlag" @click="backTop" src="../assets/picture/title/up.png" alt />
       </a>
     </div>
     <my-footer></my-footer>
@@ -354,7 +354,8 @@ export default {
       },
       show: true,
       show2: false,
-      active: true
+      active: true,
+      backFlag: false
     };
   },
   components: {
@@ -374,16 +375,36 @@ export default {
     iHidden() {
       this.show2 = !this.show2;
     },
-    handleScroll() {
-      var scrollTop =
+    backTop() {
+      const that = this;
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-that.scrollTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          that.scrollTop + ispeed;
+        if (that.scrollTop === 0) {
+          clearInterval(timer);
+        }
+      }, 16);
+    },
+    scrollToTop() {
+      const that = this;
+      let scrollTop =
+        window.pageYOffset ||
         document.documentElement.scrollTop ||
-        document.body.scrollTop ||
-        window.pageYOffset;
-      console.log(scrollTop);
+        document.body.scrollTop;
+      that.scrollTop = scrollTop;
+      if (that.scrollTop > 60) {
+        that.backFlag = true;
+      } else {
+        that.backFlag = false;
+      }
     }
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.scrollToTop);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.scrollToTop);
   }
 };
 </script>
@@ -454,7 +475,7 @@ div.pic {
   top: 185px;
 }
 .body_top .right {
-  right: 100px;
+  left: 1035px;
 }
 .body_top .button img {
   display: block;
