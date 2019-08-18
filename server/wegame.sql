@@ -25,11 +25,7 @@ CREATE TABLE game_pic(
   picture VARCHAR(128),               #图片路径
   FOREIGN KEY (pid) REFERENCES game(gid) 
 );
--- 轮播图
-CREATE TABLE game_carousel(
-  cid INT PRIMARY KEY AUTO_INCREMENT, #编号
-  picture VARCHAR(128)                #图片路径
-);
+
 
 -- 用户模块
 -- 用户信息
@@ -38,11 +34,7 @@ CREATE TABLE game_user(
   uname VARCHAR(32),
   upwd VARCHAR(32),
   email VARCHAR(64),
-  phone VARCHAR(16),
-
-  avatar VARCHAR(128),               #头像图片路径
-  user_name VARCHAR(32),             #用户名，如王小明
-  gender INT                         #性别  0-女  1-男
+  phone VARCHAR(16)
 );
 
 -- 购物车
@@ -53,12 +45,7 @@ CREATE TABLE game_shoppingcart(
   is_checked BOOLEAN                 #是否已勾选，确定购买
 );
 
--- 订单
-CREATE TABLE game_order(
-  did INT PRIMARY KEY AUTO_INCREMENT,
-  order_id INT,           #订单编号
-  product_id INT          #产品编号
-);
+
 
 -- 数据导入
 INSERT INTO game VALUES
@@ -122,3 +109,4 @@ INSERT INTO game_pic VALUES
 (NULL,'picture/game/boxiyashiguang.jpg'),
 (NULL,'picture/game/shiluochengbao.jpg'),
 (NULL,'picture/game/jihuang.jpg');
+
