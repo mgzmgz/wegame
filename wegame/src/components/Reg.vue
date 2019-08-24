@@ -2,16 +2,21 @@
 <body>
   <div class="reg">
     <div class="line">
-      <input type="text" name="uname" id="uname" placeholder="用户名" />
+      <input type="text" v-model="uname" placeholder="用户名" />
+      <p v-show="sUname">用户名格式错误</p>
     </div>
     <div class="line">
-      <input type="text" name="upwd" id="upwd" placeholder="密码" />
+      <input type="text" v-model="upwd" placeholder="密码" />
+      <p v-show="sUpwd">密码格式错误</p>
     </div>
     <div class="line">
-      <input type="text" name="cpwd" id="cpwd" placeholder="确认密码" />
+      <input type="text" v-model="cpwd" placeholder="确认密码" />
     </div>
     <div class="line">
-      <input type="text" name="phone" id="phone" placeholder="手机号" />
+      <input type="text" v-model="phone" placeholder="手机号" />
+    </div>
+    <div class="line">
+      <input type="text" v-model="email" placeholder="邮箱" />
     </div>
     <div class="line">
       <button>注册</button>
@@ -22,20 +27,37 @@
 <script>
 export default {
   data() {
-    return {};
-  }
+    return {
+      sUname: false,
+      sUpwd: false,
+      uname: "",
+      upwd: "",
+      cpwd: "",
+      phone: "",
+      email: ""
+    };
+  },
+  method:{
+    reg(){
+
+    }
+  },
+  created() {
+
+  },
 };
 </script>
 <style scoped>
 div.reg {
   position: fixed;
-  left:50%;top:50%;
+  left: 50%;
+  top: 50%;
   margin-left: -175.5px;
-  margin-top: -184px;
+  margin-top: -230px;
   width: 315px;
-  border: 1px solid rgba(246, 156, 0,0.5);
+  border: 1px solid rgba(246, 156, 0, 0.5);
   border-radius: 5px;
-  background: rgba(245, 245, 245, 0.2);
+  background: #fff9e4;
 }
 div {
   box-sizing: border-box;
@@ -59,9 +81,14 @@ button {
   border: none;
   outline: none;
   background: #f69c00;
+  cursor: pointer;
 }
 body {
   background: url(../assets/picture/title/bg1.jpg);
   background-size: cover;
+}
+p {
+  margin: 10px 0 -10px 10px;
+  font-size: 10px;
 }
 </style>

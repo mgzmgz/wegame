@@ -61,55 +61,16 @@
       <div class="body_middle_top">
         <h1>火爆新品</h1>
         <a href="#">
-          <img src="../assets/picture/game/sanguosha.jpg" alt />
+          <img :src="baseUrl+'picture/game/sanguosha.jpg'" alt />
         </a>
         <ul>
-          <li>
+          <li v-for="(item,i) of game.slice(0,5)" :key="i">
             <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
+              <img :src="baseUrl+item.pic" alt />
               <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <p>2019-7</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <p>2019-7</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <p>2019-7</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <p>2019-7</p>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
+                <strong>{{item.gname}}</strong>
+                <p v-if="item.price==0">免费</p>
+                <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
               <p>2019-7</p>
             </a>
@@ -122,55 +83,16 @@
       <div class="body_middle_top">
         <h1>本周热销</h1>
         <a href="#">
-          <img src="../assets/picture/game/sanguosha.jpg" alt />
+          <img :src="baseUrl+'picture/game/jianwang3.jpg'" alt />
         </a>
         <ul>
-          <li>
+          <li v-for="(item,i) of game.slice(20,25)" :key="i">
             <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
+              <img :src="baseUrl+item.pic" alt />
               <div>
-                <strong>堡垒之夜</strong>
-                <p>￥24</p>
-              </div>
-              <i></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <i></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <i></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <i></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
+                <strong>{{item.gname}}</strong>
+                <p v-if="item.price==0">免费</p>
+                <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
               <i></i>
             </a>
@@ -183,38 +105,13 @@
       <div class="body_middle_top_right">
         <h1>口碑佳作</h1>
         <ul>
-          <li>
+          <li v-for="(item,i) of game.slice(15,18)" :key="i">
             <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
+              <img :src="baseUrl+item.pic" alt />
               <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <div class="tj">
-                <p>99%</p>
-                <p>周推荐率</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <div class="tj">
-                <p>99%</p>
-                <p>周推荐率</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
+                <strong>{{item.gname}}</strong>
+                <p v-if="item.price==0">免费</p>
+                <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
               <div class="tj">
                 <p>99%</p>
@@ -225,38 +122,13 @@
         </ul>
         <h1>最新上架</h1>
         <ul>
-          <li>
+          <li v-for="(item,i) of game.slice(10,13)" :key="i">
             <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
+              <img :src="baseUrl+item.pic" alt />
               <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <div class="tj">
-                <p>99%</p>
-                <p>周推荐率</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
-              </div>
-              <div class="tj">
-                <p>99%</p>
-                <p>周推荐率</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/game/baoleizhiye.jpg" alt />
-              <div>
-                <strong>堡垒之夜</strong>
-                <p>免费</p>
+                <strong>{{item.gname}}</strong>
+                <p v-if="item.price==0">免费</p>
+                <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
               <div class="tj">
                 <p>99%</p>
@@ -273,7 +145,7 @@
       <ul>
         <li>
           <a href="#">
-            <img src="../assets/picture/update/miaosikuaipao.jpg" alt />
+            <img :src="baseUrl+'picture/update/miaosikuaipao.jpg'" alt />
             <h3>第二阶段鸽王挑战赛正式开始！</h3>
             <p>喵斯快跑</p>
             <div class="text">第二阶段开始，肝起来少年少女们！</div>
@@ -281,18 +153,18 @@
         </li>
         <li>
           <a href="#">
-            <img src="../assets/picture/update/miaosikuaipao.jpg" alt />
-            <h3>第二阶段鸽王挑战赛正式开始！</h3>
-            <p>喵斯快跑</p>
-            <div class="text">第二阶段开始，肝起来少年少女们！</div>
+            <img :src="baseUrl+'picture/update/jianwang3.jpg'" alt />
+            <h3>最新活动上线了！</h3>
+            <p>剑网3</p>
+            <div class="text">豪华仙鹿坐骑免费送</div>
           </a>
         </li>
         <li>
           <a href="#">
-            <img src="../assets/picture/update/miaosikuaipao.jpg" alt />
-            <h3>第二阶段鸽王挑战赛正式开始！</h3>
-            <p>喵斯快跑</p>
-            <div class="text">第二阶段开始，肝起来少年少女们！</div>
+            <img :src="baseUrl+'picture/update/zhongguoshijiazhang.png'" alt />
+            <h3>2.0版本上线</h3>
+            <p>中国式家长</p>
+            <div class="text">修复了充值异常bug</div>
           </a>
         </li>
       </ul>
@@ -303,27 +175,27 @@
       <div class="bottom">
         <div class="d1">
           <div class="d11">
-            <img src="../assets/picture/x/jianwang3.jpeg" alt />
+            <img :src="baseUrl+'picture/x/jianwang3.jpeg'" alt />
           </div>
           <div class="d2">
-            <img src="../assets/picture/y/gujianqitan.jpeg" alt />
+            <img :src="baseUrl+'picture/y/gujianqitan.jpeg'" alt />
           </div>
         </div>
         <span class="d12">
-          <img src="../assets/picture/game/boxiyashiguang.jpeg" alt />
+          <img :src="baseUrl+'picture/game/boxiyashiguang.jpeg'" alt />
         </span>
         <span class="d13">
-          <img src="../assets/picture/game/tiejiaxiongbing.jpg" alt />
+          <img :src="baseUrl+'picture/game/tiejiaxiongbing.jpg'" alt />
         </span>
         <div class="d3">
           <div class="d33">
-            <img src="../assets/picture/game/zhongguoshijiazhang.jpg" alt />
+            <img :src="baseUrl+'picture/game/zhongguoshijiazhang.jpg'" alt />
           </div>
           <div class="d33">
-            <img src="../assets/picture/game/shiluochengbao.jpeg" alt />
+            <img :src="baseUrl+'picture/game/shiluochengbao.jpeg'" alt />
           </div>
           <div class="d33">
-            <img src="../assets/picture/game/jihuang.jpeg" alt />
+            <img :src="baseUrl+'picture/game/jihuang.jpeg'" alt />
           </div>
         </div>
       </div>
@@ -355,7 +227,9 @@ export default {
       show: true,
       show2: false,
       active: true,
-      backFlag: false
+      backFlag: false,
+      baseUrl: "http://127.0.0.1:3000/",
+      game: []
     };
   },
   components: {
@@ -405,6 +279,17 @@ export default {
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollToTop);
+  },
+  created() {
+    this.axios
+      .get()
+      .then(res => {
+        console.log(res.data.data);
+        this.game = res.data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
@@ -521,7 +406,6 @@ div.pic {
   background: #fff;
 }
 .body_middle > div > ul > li > a > img {
-  width: 102px;
   height: 58px;
 }
 .body_middle > div > ul {
@@ -534,29 +418,31 @@ div.pic {
   display: inline-block;
   font: 15px;
   color: #3c3c3c;
-  margin: 5px 50px 5px 20px;
+  margin: 5px 20px 5px 20px;
 }
 .body_middle > div > ul > li > a > div > p {
   font-size: 14px;
   color: #3c3c3c;
   margin: 5px 50px 5px 20px;
+  float: left;
 }
 .body_middle > div > ul > li > a > p {
   display: block;
-  margin: 6px 0 0 28px;
+  margin: 6px 0 0 -5px;
   font-size: 13px;
   color: #3c3c3c;
+  width: 100px;
 }
 .body_middle > div > ul > li > a > i {
-  display: block;
-  width: 15px;
+  display: inline-block;
+  width: 20px;
   height: 15px;
-  margin: 19px 0 0 52px;
+  margin: 20px 20px 0 52px;
   background: url(../assets/picture/title/sprite2.png) 15px -16px;
 }
 .body_middle > div > ul > li > a > div.tj > p {
   display: block;
-  margin: 8px 10px;
+  margin: 5px 10px;
   text-align: center;
 }
 .body_middle > div.body_middle_top_right > ul > li > a {

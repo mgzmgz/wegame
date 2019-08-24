@@ -36,7 +36,7 @@ div.login {
   width: 315px;
   border: 1px solid rgba(246, 156, 0,0.5);
   border-radius: 5px;
-  background: rgba(245, 245, 245, 0.2);
+  background: #fff9e4
 }
 div {
   box-sizing: border-box;
