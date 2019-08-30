@@ -47,27 +47,12 @@ server.get("/", (req, res) => {
   })
 })
 
-server.get("/reg", (req, res) => {
-  var uname = req.query.uname
-  var upwd = req.query.upwd
-  var phone = req.query.phone
-  var email = req.query.email
-  if (!uname) {
-    res.send({ code: 401, msg: 'uname required' });
-    return;
-  }
-  if (!upwd) {
-    res.send({ code: 402, msg: 'upwd required' });
-    return;
-  }
-  if (!email) {
-    res.send({ code: 403, msg: 'email required' });
-    return;
-  }
-  if (!phone) {
-    res.send({ code: 404, msg: 'phone required' });
-    return;
-  }
+//注册
+server.post("/reg", (req, res) => {
+  var uname = req.body.uname
+  var upwd = req.body.upwd
+  var phone = req.body.phone
+  var email = req.body.email
 
   var sql = `SELECT uid FROM game_user WHERE uname=?`
   pool.query(sql, [uname], (err, result) => {
@@ -75,8 +60,8 @@ server.get("/reg", (req, res) => {
     if (result.length > 0) {
       res.send({ code: -1, msg: "用户名重复" })
     } else {
-      var sql = `INSERT INTO game_user(uid,uname,upwd,email,phone) VALUES(NULL,'${uname}','${upwd}','${email}','${phone}')`
-      pool.query(sql, (err, result) => {
+      var sql = `INSERT INTO game_user(uid,uname,upwd,email,phone) VALUES(NULL,?,md5(?),'${email}','${phone}')`
+      pool.query(sql, [uname, upwd, email, phone], (err, result) => {
         console.log(sql)
         if (err) throw err
         if (result.affectedRows > 0) {
@@ -85,6 +70,37 @@ server.get("/reg", (req, res) => {
           res.send({ code: -1, msg: "添加失败" })
         }
       })
+    }
+  })
+})
+
+//登录
+server.post("/login", (req, res) => {
+  var uname = req.body.uname
+  var upwd = req.body.upwd
+  var sql = `SELECT uid FROM game_user WHERE uname=? AND upwd=md5(?)`
+  pool.query(sql, [uname, upwd], (err, result) => {
+    if (err) throw err
+    if (result.length == 0) {
+      console.log(result)
+      res.send({ code: -1, msg: "用户名或密码有误" })
+    } else {
+      req.session.uid = result[0].uid
+      res.send({ code: 1, msg: "登录成功" })
+      console.log(res)
+    }
+  })
+})
+
+//查询
+server.get("/detail", (req, res) => {
+  var sql = `SELECT * FROM game`
+  pool.query(sql, (err, result) => {
+    if (err) throw err
+    if (result.length > 0) {
+      res.send({ code: 1, msg: "查询成功", data: result })
+    } else {
+      res.send({ code: -1, msg: "查询失败" })
     }
   })
 })

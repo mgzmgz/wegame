@@ -11,15 +11,17 @@
         <a href="#">客服</a>
       </div>
       <div class="header_ft">
-        <a href="#">登录</a>
+        <a href="javascript:;" @click="login">登录</a>
         <span>|</span>
-        <a href="#">注册</a>
+        <a href="javascript:;" @click="reg">注册</a>
       </div>
     </div>
     <div class="header_nav">
       <ul class="header_nav_hd">
         <li>精选</li>
-        <li>所有游戏</li>
+        <router-link to="List">
+          <li>所有游戏</li>
+        </router-link>
       </ul>
       <ul class="header_nav_bd">
         <li>大型网游</li>
@@ -32,13 +34,32 @@
         </a>
       </div>
     </div>
+    <MyReg v-show="regS"></MyReg>
+    <MyLogin v-show="loginS"></MyLogin>
   </header>
 </template>
 <script>
+import MyReg from "../components/Reg.vue";
+import MyLogin from "../components/Login.vue";
 export default {
   data() {
-    return {};
+    return {
+      regS: false,
+      loginS: false
+    };
   },
+  methods: {
+    reg() {
+      this.regS = !this.regS;
+    },
+    login() {
+      this.loginS = !this.loginS;
+    }
+  },
+  components: {
+    MyReg: MyReg,
+    MyLogin: MyLogin
+  }
 };
 </script>
 <style scoped>
@@ -128,8 +149,8 @@ header > .header_head > .header_ft > span {
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
 }
-.header_nav_hd li:hover{
-  color:#f69c00
+.header_nav_hd li:hover {
+  color: #f69c00;
 }
 .header_nav_bd li {
   cursor: pointer;
@@ -139,8 +160,8 @@ header > .header_head > .header_ft > span {
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
 }
-.header_nav_bd li:hover{
-  color:#f69c00
+.header_nav_bd li:hover {
+  color: #f69c00;
 }
 .header_nav_ft {
   position: relative;
@@ -176,5 +197,8 @@ header > .header_head > .header_ft > span {
   position: absolute;
   top: 3px;
   left: 11px;
+}
+a{
+  text-decoration: none
 }
 </style>

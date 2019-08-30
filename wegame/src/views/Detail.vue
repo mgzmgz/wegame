@@ -1,15 +1,11 @@
 <template>
 <body>
-  <div class="top">
-    <img src="../assets/picture/game/miaosikuaipao.jpg" alt />
-    <h1>喵斯快跑</h1>
+  <div class="top" :style="{backgroundImage: 'url(' + baseUrl+ game[num].bg_pic + ')'}">
+    <img :src="baseUrl+game[num].pic" alt />
+    <h1>{{game[num].gname}}</h1>
   </div>
   <div class="middle">
-    <video
-      src="../assets/sanguosha.mp4"
-      autoplay="autoplay"
-      controls="controls"
-    ></video>
+    <video :src="baseUrl+'sanguosha.mp4'" autoplay="autoplay" controls="controls"></video>
     <div class="nav">
       <ul>
         <li>发行日期</li>
@@ -17,31 +13,26 @@
       </ul>
       <ul>
         <li>开发商</li>
-        <li>广州呸喽呸喽科技有限公司</li>
+        <li>{{game[num].developers}}</li>
       </ul>
       <ul>
         <li>运营商</li>
-        <li>心动网络股份有限公司</li>
+        <li>{{game[num].operator}}</li>
       </ul>
       <ul>
         <li>发行平台</li>
-        <li>WeGame</li>
+        <li>Game</li>
       </ul>
-      <p>￥14</p>
+      <p v-if="game[num].price==0">免费</p>
+      <p v-else-if="game[num].price!=0">{{game[num].price}}</p>
       <button>立即购买</button>
       <button class="cart">加入购物车</button>
-      <label for="checkbox">
-        <input type="checkbox" />
-        <span>以了解</span>
-        <a href="#">WeGame用户协议</a>
-        <button class="dl">下载</button>
-      </label>
     </div>
   </div>
   <div class="main">
     <div class="body">
       <h2>游戏详情</h2>
-      <h4></h4>
+      <div id="dt">{{game[num].details}}</div>
     </div>
     <div class="body_nav">
       <h3>最低配置要求</h3>
@@ -51,7 +42,7 @@
             <span>内存</span>
           </td>
           <td>
-            <span>2 GB</span>
+            <span>{{game[num].memory}}</span>
           </td>
         </tr>
         <tr>
@@ -59,7 +50,7 @@
             <span>显卡</span>
           </td>
           <td>
-            <span>NVIDIA GeForce 6600 GT</span>
+            <span>{{game[num].video_card}}</span>
           </td>
         </tr>
         <tr>
@@ -67,7 +58,7 @@
             <span>硬盘</span>
           </td>
           <td>
-            <span>2 GB</span>
+            <span>{{game[num].disk}}</span>
           </td>
         </tr>
         <tr>
@@ -75,7 +66,7 @@
             <span>CPU</span>
           </td>
           <td>
-            <span>Intel(R) Pentium(R) M processor 2.00GHz</span>
+            <span>{{game[num].cpu}}</span>
           </td>
         </tr>
         <tr>
@@ -83,7 +74,7 @@
             <span>系统</span>
           </td>
           <td>
-            <span>Windows 7+</span>
+            <span>{{game[num].os}}</span>
           </td>
         </tr>
       </table>
@@ -94,7 +85,57 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      gid: "",
+      gname: "",
+      price: "",
+      memory: "",
+      video_card: "",
+      disk: "",
+      cpu: "",
+      os: "",
+      details: "",
+      shelf_time: "",
+      developers: "",
+      operator: "",
+      pic: "",
+      bg_pic: "",
+      game: "",
+      num: 0,
+      baseUrl: "http://127.0.0.1:3000/"
+    };
+  },
+  created() {
+    var gid = this.gid;
+    var gname = this.gname;
+    var price = this.price;
+    var memory = this.memory;
+    var video_card = this.video_card;
+    var disk = this.disk;
+    var cpu = this.cpu;
+    var os = this.os;
+    var details = this.details;
+    var shelf_time = this.shelf_time;
+    var developers = this.developers;
+    var operator = this.operator;
+    var pic = this.pic;
+    var bg_pic = this.bg_pic;
+
+    this.axios
+      .get("/detail")
+      .then(res => {
+        console.log(res.data.data);
+        this.game = res.data.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    this.num = this.$route.fullPath.slice(8);
+  },
+  watch: {
+    $route() {
+      this.num = this.$route.fullPath.slice(8);
+    }
   }
 };
 </script>
@@ -106,7 +147,7 @@ body {
 }
 .top {
   display: flex;
-  background: url(../assets/picture/bj/miaosikuaipao.jpg) no-repeat top center;
+  background: no-repeat top center;
   padding-top: 100px;
   padding-left: 100px;
 }
@@ -143,6 +184,8 @@ li {
   margin-bottom: 1%;
   border-radius: 5px;
   margin-left: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 ul {
   display: block;
@@ -193,16 +236,7 @@ button.dl {
   color: #3c3c3c;
   cursor: pointer;
 }
-label {
-  display: block;
-  margin-left: 6rem;
-  margin-top: 1.5rem;
-  font-size: 5px;
-  color: #757575;
-}
-label a {
-  color: #757575;
-}
+
 h2 {
   display: block;
   margin-left: 10%;
@@ -233,5 +267,14 @@ td {
 }
 .tit {
   width: 4rem;
+}
+#dt {
+  margin-left: 80px;
+  margin-right: 80px;
+  line-height: 50px;
+  font-size: 20px;
+}
+.body_nav {
+  margin-bottom: 100px;
 }
 </style>

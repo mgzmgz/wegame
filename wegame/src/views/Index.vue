@@ -10,8 +10,8 @@
     </div>
     <my-nav></my-nav>
     <my-carousel></my-carousel>
+      <h1 class="body_top">热点预告</h1>
     <div class="body_top">
-      <h1>热点预告</h1>
       <div class="button left">
         <img src="../assets/picture/title/left.png" alt />
       </div>
@@ -60,12 +60,12 @@
       ****************************************************-->
       <div class="body_middle_top">
         <h1>火爆新品</h1>
-        <a href="#">
+        <router-link to="Detail?14">
           <img :src="baseUrl+'picture/game/sanguosha.jpg'" alt />
-        </a>
+        </router-link>
         <ul>
           <li v-for="(item,i) of game.slice(0,5)" :key="i">
-            <a href="#">
+            <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
               <div>
                 <strong>{{item.gname}}</strong>
@@ -73,7 +73,7 @@
                 <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
               <p>2019-7</p>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -82,12 +82,12 @@
       ****************************************************-->
       <div class="body_middle_top">
         <h1>本周热销</h1>
-        <a href="#">
+        <router-link to="Detail?20">
           <img :src="baseUrl+'picture/game/jianwang3.jpg'" alt />
-        </a>
+        </router-link>
         <ul>
           <li v-for="(item,i) of game.slice(20,25)" :key="i">
-            <a href="#">
+            <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
               <div>
                 <strong>{{item.gname}}</strong>
@@ -95,7 +95,7 @@
                 <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
               <i></i>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -106,7 +106,7 @@
         <h1>口碑佳作</h1>
         <ul>
           <li v-for="(item,i) of game.slice(15,18)" :key="i">
-            <a href="#">
+           <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
               <div>
                 <strong>{{item.gname}}</strong>
@@ -117,13 +117,13 @@
                 <p>99%</p>
                 <p>周推荐率</p>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
         <h1>最新上架</h1>
         <ul>
           <li v-for="(item,i) of game.slice(10,13)" :key="i">
-            <a href="#">
+             <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
               <div>
                 <strong>{{item.gname}}</strong>
@@ -134,7 +134,7 @@
                 <p>99%</p>
                 <p>周推荐率</p>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -144,28 +144,28 @@
       <h1>最近更新</h1>
       <ul>
         <li>
-          <a href="#">
+          <router-link to="Detail?21">
             <img :src="baseUrl+'picture/update/miaosikuaipao.jpg'" alt />
             <h3>第二阶段鸽王挑战赛正式开始！</h3>
             <p>喵斯快跑</p>
             <div class="text">第二阶段开始，肝起来少年少女们！</div>
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="#">
+          <router-link to="Detail?20">
             <img :src="baseUrl+'picture/update/jianwang3.jpg'" alt />
             <h3>最新活动上线了！</h3>
             <p>剑网3</p>
             <div class="text">豪华仙鹿坐骑免费送</div>
-          </a>
+          </router-link>
         </li>
         <li>
-          <a href="#">
+          <router-link to="Detail?19">
             <img :src="baseUrl+'picture/update/zhongguoshijiazhang.png'" alt />
             <h3>2.0版本上线</h3>
             <p>中国式家长</p>
             <div class="text">修复了充值异常bug</div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -209,14 +209,12 @@
         <img v-show="backFlag" @click="backTop" src="../assets/picture/title/up.png" alt />
       </a>
     </div>
-    <my-footer></my-footer>
   </div>
 </template>
 <script>
 import MyHeader from "../components/Header.vue";
 import MyNav from "../components/Nav.vue";
 import MyCarousel from "../components/Carousel.vue";
-import MyFooter from "../components/Footer.vue";
 export default {
   data() {
     return {
@@ -229,14 +227,14 @@ export default {
       active: true,
       backFlag: false,
       baseUrl: "http://127.0.0.1:3000/",
-      game: []
+      game: [],
+      gid: ""
     };
   },
   components: {
     MyHeader: MyHeader,
     MyNav: MyNav,
-    MyCarousel: MyCarousel,
-    MyFooter: MyFooter
+    MyCarousel: MyCarousel
   },
   methods: {
     down() {
@@ -324,7 +322,7 @@ div.pic {
 }
 .body_top h1 {
   display: block;
-  margin-left: 4%;
+  margin-left: 20%;
 }
 .body_top .list {
   position: relative;
