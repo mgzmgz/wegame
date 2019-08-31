@@ -4,7 +4,7 @@
     <my-nav></my-nav>
     <div class="body_game">
       <ul>
-        <li v-for="(item,i) of game" :key="i">
+        <li v-for="(item,i) of game.slice(n1,n2)" :key="i">
           <div>
             <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
@@ -28,17 +28,15 @@
     </div>
     <div class="block">
       <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage3"
-        :page-size="100"
-        layout="prev, pager, next, jumper"
-        :total="1000"
+        layout="prev, pager, next"
+        :total="game.length"
+        @next-click="right"
+        @prev-click="left"
       ></el-pagination>
+      <br />
+      <br />
+      <br />
     </div>
-    <br />
-    <br />
-    <br />
   </div>
 </template>
 <script>
@@ -48,7 +46,9 @@ export default {
   data() {
     return {
       baseUrl: "http://127.0.0.1:3000/",
-      game:""
+      game: "",
+      n1: 0,
+      n2: 10,
     };
   },
   components: {
@@ -65,7 +65,25 @@ export default {
       .catch(err => {
         console.log(err);
       });
-  }
+  },
+  methods: {
+    right() {
+      this.n1 += 10;
+      if (this.n2 > this.game.length) {
+        this.n2 = "";
+      } else {
+        this.n2 += 10;
+      }
+    },
+    left() {
+      if (this.game.length < 0) {
+        this.n1 = 0;
+      } else {
+        this.n1 -= 10;
+      }
+      this.n2 -= 10;
+    }
+  },
 };
 </script>
 <style scoped>
@@ -125,11 +143,12 @@ ul img {
 .body_game {
   margin-left: 30%;
   width: 700px;
+  margin-top: 50px;
 }
 div.body {
   background: url(../assets/picture/title/bg.jpg);
 }
 .block {
-  margin: 20px 0 0 32%;
+  margin: 20px 0 0 45%;
 }
 </style>

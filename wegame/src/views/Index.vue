@@ -10,8 +10,8 @@
     </div>
     <my-nav></my-nav>
     <my-carousel></my-carousel>
-      <h1 class="body_top">热点预告</h1>
     <div class="body_top">
+      <h1 class="body_top">热点预告</h1>
       <div class="button left">
         <img src="../assets/picture/title/left.png" alt />
       </div>
@@ -322,7 +322,7 @@ div.pic {
 }
 .body_top h1 {
   display: block;
-  margin-left: 20%;
+  margin-left: 4%;
 }
 .body_top .list {
   position: relative;
