@@ -16,7 +16,7 @@
             </a>
             <p>2011-09-22 上线</p>
             <a href="#" class="title">
-              <p>MOBA</p>
+              <p>{{item.title}}</p>
             </a>
           </div>
           <div class="d3">
@@ -27,12 +27,9 @@
       </ul>
     </div>
     <div class="block">
-      <el-pagination
-        layout="prev, pager, next"
-        :total="game.length"
-        @next-click="right"
-        @prev-click="left"
-      ></el-pagination>
+      <el-pagination layout="prev,next" :total="game.length" @next-click="right" @prev-click="left"></el-pagination>
+      <div class="pno">{{num}}</div>
+      <div class="pto">共 {{pto}} 页</div>
       <br />
       <br />
       <br />
@@ -49,6 +46,8 @@ export default {
       game: "",
       n1: 0,
       n2: 10,
+      num: 1,
+      pto: ""
     };
   },
   components: {
@@ -61,6 +60,7 @@ export default {
       .then(res => {
         console.log(res.data.data);
         this.game = res.data.data;
+        this.pto = Math.ceil(this.game.length/10)
       })
       .catch(err => {
         console.log(err);
@@ -74,6 +74,7 @@ export default {
       } else {
         this.n2 += 10;
       }
+      this.num++;
     },
     left() {
       if (this.game.length < 0) {
@@ -82,8 +83,9 @@ export default {
         this.n1 -= 10;
       }
       this.n2 -= 10;
+      this.num--;
     }
-  },
+  }
 };
 </script>
 <style scoped>
@@ -150,5 +152,19 @@ div.body {
 }
 .block {
   margin: 20px 0 0 45%;
+  position: relative;
+}
+.pno {
+  position: absolute;
+  top: 5px;
+  left: 36px;
+  color: #303133;
+  font-size: 14px
+}
+.pto{
+   position: absolute;
+  top: 4px;
+  left: 150px;
+  color: #303133;
 }
 </style>

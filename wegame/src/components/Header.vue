@@ -5,10 +5,10 @@
         <img src="../assets/picture/title/wegame.png" alt />
       </div>
       <div class="header_bd">
-        <a href="#">游戏</a>
-        <a href="#">客户端</a>
-        <a href="#">移动端</a>
-        <a href="#">客服</a>
+        <a href="javascript:;" @click="home">游戏</a>
+        <a href="javascript:;" @click="home">客户端</a>
+        <a href="javascript:;" @click="home">移动端</a>
+        <a href="javascript:;" @click="home">客服</a>
       </div>
       <div class="header_ft">
         <a href="javascript:;" @click="login">登录</a>
@@ -29,7 +29,7 @@
       </ul>
       <div class="header_nav_ft">
         <input type="text" />
-        <a href="#">
+        <a href="javascript:;">
           <i></i>
         </a>
       </div>
@@ -54,6 +54,9 @@ export default {
     },
     login() {
       this.loginS = !this.loginS;
+    },
+    home(){
+      this.$router.push("/")
     }
   },
   components: {

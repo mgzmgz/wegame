@@ -52,6 +52,7 @@ export default {
             message: "登录成功",
             type: "warning"
           });
+          this.show = !this.show;
         }
       });
     },

@@ -1,5 +1,5 @@
 <template>
-<body  v-show="show">
+<body v-show="show">
   <div class="reg">
     <i @click="close" class="el-icon-circle-close"></i>
     <div class="line">
@@ -37,7 +37,7 @@ export default {
       email: "",
       unameMsg: "",
       upwdMsg: "",
-      show:true
+      show: true
     };
   },
   methods: {
@@ -119,13 +119,13 @@ export default {
             message: "注册成功",
             type: "warning"
           });
-          this.show=!this.show
+          this.show = !this.show;
           console.log(res);
         }
       });
     },
     close() {
-     this.show=!this.show
+      this.show = !this.show;
     }
   }
 };

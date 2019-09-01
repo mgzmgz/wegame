@@ -26,7 +26,7 @@
       <p v-if="game[num].price==0">免费</p>
       <p v-else-if="game[num].price!=0">{{game[num].price}}</p>
       <button>立即购买</button>
-      <button class="cart">加入购物车</button>
+      <button class="cart" @click="addcart">加入购物车</button>
     </div>
   </div>
   <div class="main">

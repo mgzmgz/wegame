@@ -36,7 +36,7 @@ server.listen(3000);
 
 //查询
 server.get("/", (req, res) => {
-  var sql = `SELECT gid,gname,price,pic,shelf_time FROM game`
+  var sql = `SELECT gid,gname,price,pic,shelf_time,title FROM game`
   pool.query(sql, [], (err, result) => {
     if (err) {
       res.send(err)

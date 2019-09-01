@@ -12,43 +12,55 @@
     <my-carousel></my-carousel>
     <div class="body_top">
       <h1 class="body_top">热点预告</h1>
-      <div class="button left">
+      <div class="button left" @click="left">
         <img src="../assets/picture/title/left.png" alt />
       </div>
-      <div class="button right">
+      <div class="button right" @click="right">
         <img src="../assets/picture/title/right.png" alt />
       </div>
       <div class="list">
         <ul>
+          <li :style="{marginLeft: leftIndex+'px'}">
+            <router-link to="Detail?4">
+              <img :src="baseUrl+'picture/y/baoleizhiye.jpg'" alt />
+            </router-link>
+            <p>堡垒之夜</p>
+          </li>
           <li>
-            <a href="#">
-              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-            </a>
+            <router-link to="Detail?0">
+              <img :src="baseUrl+'picture/y/FIFA4.jpg'" alt />
+            </router-link>
+            <p>FIFA4</p>
+          </li>
+          <li>
+            <router-link to="Detail?9">
+              <img :src="baseUrl+'picture/y/jianling.jpg'" alt />
+            </router-link>
+            <p>剑灵</p>
+          </li>
+          <li>
+            <router-link to="Detail?20">
+              <img :src="baseUrl+'picture/y/jianwang3.jpg'" alt />
+            </router-link>
+            <p>剑网3</p>
+          </li>
+          <li>
+            <router-link to="Detail?21">
+              <img :src="baseUrl+'picture/y/miaosikuaipao.jpg'" alt />
+            </router-link>
             <p>喵斯快跑</p>
           </li>
           <li>
-            <a href="#">
-              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-            </a>
-            <p>喵斯快跑</p>
+            <router-link to="Detail?14">
+              <img :src="baseUrl+'picture/y/sanguosha.jpg'" alt />
+            </router-link>
+            <p>三国杀</p>
           </li>
           <li>
-            <a href="#">
-              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-            </a>
-            <p>喵斯快跑</p>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-            </a>
-            <p>喵斯快跑</p>
-          </li>
-          <li>
-            <a href="#">
-              <img src="../assets/picture/y/miaosikuaipao.jpg" alt />
-            </a>
-            <p>喵斯快跑</p>
+            <router-link to="Detail?24">
+              <img :src="baseUrl+'picture/y/zuoyefengle.jpg'" alt />
+            </router-link>
+            <p>作业疯了</p>
           </li>
         </ul>
       </div>
@@ -106,7 +118,7 @@
         <h1>口碑佳作</h1>
         <ul>
           <li v-for="(item,i) of game.slice(15,18)" :key="i">
-           <router-link :to="`Detail?${item.gid-1}`">
+            <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
               <div>
                 <strong>{{item.gname}}</strong>
@@ -123,7 +135,7 @@
         <h1>最新上架</h1>
         <ul>
           <li v-for="(item,i) of game.slice(10,13)" :key="i">
-             <router-link :to="`Detail?${item.gid-1}`">
+            <router-link :to="`Detail?${item.gid-1}`">
               <img :src="baseUrl+item.pic" alt />
               <div>
                 <strong>{{item.gname}}</strong>
@@ -175,34 +187,48 @@
       <div class="bottom">
         <div class="d1">
           <div class="d11">
-            <img :src="baseUrl+'picture/x/jianwang3.jpeg'" alt />
+            <router-link to="Detail?20">
+              <img :src="baseUrl+'picture/x/jianwang3.jpeg'" alt />
+            </router-link>
           </div>
           <div class="d2">
-            <img :src="baseUrl+'picture/y/gujianqitan.jpeg'" alt />
+            <router-link to="Detail?16">
+              <img :src="baseUrl+'picture/y/gujianqitan.jpeg'" alt />
+            </router-link>
           </div>
         </div>
         <span class="d12">
-          <img :src="baseUrl+'picture/game/boxiyashiguang.jpeg'" alt />
+          <router-link to="Detail?25">
+            <img :src="baseUrl+'picture/game/boxiyashiguang.jpeg'" alt />
+          </router-link>
         </span>
         <span class="d13">
-          <img :src="baseUrl+'picture/game/tiejiaxiongbing.jpg'" alt />
+          <router-link to="Detail?23">
+            <img :src="baseUrl+'picture/game/tiejiaxiongbing.jpg'" alt />
+          </router-link>
         </span>
         <div class="d3">
           <div class="d33">
-            <img :src="baseUrl+'picture/game/zhongguoshijiazhang.jpg'" alt />
+            <router-link to="Detail?19">
+              <img :src="baseUrl+'picture/game/zhongguoshijiazhang.jpg'" alt />
+            </router-link>
           </div>
           <div class="d33">
-            <img :src="baseUrl+'picture/game/shiluochengbao.jpeg'" alt />
+            <router-link to="Detail?26">
+              <img :src="baseUrl+'picture/game/shiluochengbao.jpeg'" alt />
+            </router-link>
           </div>
           <div class="d33">
-            <img :src="baseUrl+'picture/game/jihuang.jpeg'" alt />
+            <router-link to="Detail?27">
+              <img :src="baseUrl+'picture/game/jihuang.jpeg'" alt />
+            </router-link>
           </div>
         </div>
       </div>
     </div>
 
     <div class="side">
-      <a href="javascript:;">
+      <a href="javascript:;" @click="cart">
         <img src="../assets/picture/title/shopping.png" alt />
       </a>
       <a href="javascript:;">
@@ -228,7 +254,8 @@ export default {
       backFlag: false,
       baseUrl: "http://127.0.0.1:3000/",
       game: [],
-      gid: ""
+      gid: "",
+      leftIndex: 0
     };
   },
   components: {
@@ -237,6 +264,21 @@ export default {
     MyCarousel: MyCarousel
   },
   methods: {
+    left() {
+      if (this.leftIndex == 0) {
+        this.leftIndex = 0;
+      } else {
+        this.leftIndex += 200;
+      }
+    },
+    right() {
+      if (this.leftIndex > -400) {
+        this.leftIndex -= 200;
+      }
+    },
+    cart() {
+      this.$router.push("/Cart");
+    },
     down() {
       this.show = !this.show;
       this.active = !this.active;
@@ -326,7 +368,7 @@ div.pic {
 }
 .body_top .list {
   position: relative;
-  left: 38px;
+  left: 45px;
   overflow: hidden;
   height: 300px;
   width: 990px;
@@ -335,7 +377,8 @@ div.pic {
   display: inline-block;
   position: absolute;
   height: 300px;
-  overflow: hidden;
+  /* overflow: hidden; */
+  width: 990px;
   padding: 0;
 }
 .body_top ul li {
@@ -343,7 +386,7 @@ div.pic {
   width: 184px;
   height: 300px;
   margin: 0 7px 0 7px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .body_top .button {
@@ -356,6 +399,7 @@ div.pic {
   cursor: pointer;
   position: absolute;
   top: 185px;
+  z-index: 999;
 }
 .body_top .right {
   left: 1035px;
