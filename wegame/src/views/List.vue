@@ -14,7 +14,7 @@
             <a href="#">
               <h3>{{item.gname}}</h3>
             </a>
-            <p>2011-09-22 上线</p>
+            <p>{{item.shelf_time|time}} 上线</p>
             <a href="#" class="title">
               <p>{{item.title}}</p>
             </a>
@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       baseUrl: "http://127.0.0.1:3000/",
-      game: "",
+      game: [],
       n1: 0,
       n2: 10,
       num: 1,
@@ -54,19 +54,22 @@ export default {
     MyHeader: MyHeader,
     MyNav: MyNav
   },
-  created() {
-    this.axios
-      .get()
-      .then(res => {
-        console.log(res.data.data);
-        this.game = res.data.data;
-        this.pto = Math.ceil(this.game.length/10)
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  mounted() {
+    this.load();
   },
   methods: {
+    load() {
+      this.axios
+        .get()
+        .then(res => {
+          console.log(res.data.data);
+          this.game = res.data.data;
+          this.pto = Math.ceil(this.game.length / 10);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     right() {
       this.n1 += 10;
       if (this.n2 > this.game.length) {
@@ -159,10 +162,10 @@ div.body {
   top: 5px;
   left: 36px;
   color: #303133;
-  font-size: 14px
+  font-size: 14px;
 }
-.pto{
-   position: absolute;
+.pto {
+  position: absolute;
   top: 4px;
   left: 150px;
   color: #303133;

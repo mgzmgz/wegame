@@ -79,14 +79,14 @@ export default {
       if (!reg1.test(uname)) {
         this.$message({
           message: "用户名格式错误",
-          type: "warning"
+          type: "error"
         });
         return;
       }
       if (!reg1.test(upwd)) {
         this.$message({
           message: "密码格式错误",
-          type: "warning"
+          type: "error"
         });
         return;
       }
@@ -94,7 +94,7 @@ export default {
       if (!reg2.test(phone)) {
         this.$message({
           message: "手机号格式错误",
-          type: "warning"
+          type: "error"
         });
         return;
       }
@@ -102,7 +102,7 @@ export default {
       if (!reg3.test(email)) {
         this.$message({
           message: "电子邮箱格式错误",
-          type: "warning"
+          type: "error"
         });
         return;
       }
@@ -117,7 +117,7 @@ export default {
         } else if (res.data.code == 1) {
           this.$message({
             message: "注册成功",
-            type: "warning"
+            type: "success"
           });
           this.show = !this.show;
           console.log(res);

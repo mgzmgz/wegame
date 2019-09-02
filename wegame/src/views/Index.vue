@@ -2,7 +2,7 @@
   <div :style="bgImg">
     <my-header></my-header>
     <div class="pic" @mouseenter="iShow()" @mouseleave="iHidden()">
-      <router-link to>
+      <router-link to="Detail?14">
         <img v-show="show" src="../assets/picture/game_title/sanguosha_s.jpg" />
         <img v-show="!show" src="../assets/picture/game_title/sanguosha_b.jpg" />
       </router-link>
@@ -84,7 +84,7 @@
                 <p v-if="item.price==0">免费</p>
                 <p v-else-if="item.price!==0">￥{{item.price}}</p>
               </div>
-              <p>2019-7</p>
+              <p>{{item.shelf_time|time}}</p>
             </router-link>
           </li>
         </ul>
@@ -471,7 +471,7 @@ div.pic {
 .body_middle > div > ul > li > a > p {
   display: block;
   margin: 6px 0 0 -5px;
-  font-size: 13px;
+  font-size: 12.5px;
   color: #3c3c3c;
   width: 100px;
 }

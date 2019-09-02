@@ -45,12 +45,12 @@ export default {
         if (res.data.code == -1) {
           this.$message({
             message: "用户或密码错误",
-            type: "warning"
+            type: "error"
           });
         } else {
           this.$message({
             message: "登录成功",
-            type: "warning"
+            type: "success"
           });
           this.show = !this.show;
         }

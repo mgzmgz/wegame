@@ -9,7 +9,7 @@
     <div class="nav">
       <ul>
         <li>发行日期</li>
-        <li>2019-06-20</li>
+        <li>{{game.shelf_time|time}}</li>
       </ul>
       <ul>
         <li>开发商</li>
@@ -24,9 +24,16 @@
         <li>Game</li>
       </ul>
       <p v-if="game[num].price==0">免费</p>
-      <p v-else-if="game[num].price!=0">{{game[num].price}}</p>
-      <button>立即购买</button>
-      <button class="cart" @click="addcart">加入购物车</button>
+      <p v-else-if="game[num].price!=0">￥{{game[num].price}}</p>
+      <button>下载</button>
+      <button
+        class="cart"
+        @click="addcart"
+        :data-gid="game[num].gid"
+        :data-price="game[num].price"
+        :data-pic="game[num].pic"
+        :data-gname="game[num].gname"
+      >加入购物车</button>
     </div>
   </div>
   <div class="main">
@@ -120,20 +127,47 @@ export default {
     var operator = this.operator;
     var pic = this.pic;
     var bg_pic = this.bg_pic;
-
-    this.axios
-      .get("/detail")
-      .then(res => {
-        console.log(res.data.data);
-        this.game = res.data.data;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    this.num = this.$route.fullPath.slice(8);
+    var title = this.title;
+    this.load();
   },
   watch: {
     $route() {
+      this.num = this.$route.fullPath.slice(8);
+    }
+  },
+  methods: {
+    addcart(e) {
+      var gid = e.target.dataset.gid;
+      var price = e.target.dataset.price;
+      var pic = e.target.dataset.pic;
+      var gname = e.target.dataset.gname;
+      var obj = { gid, price, pic, gname };
+      this.axios.get("addcart", { params: obj }).then(res => {
+        if (res.data.code == -1) {
+          this.$message({
+            message: "请先登录",
+            type: "warning"
+          });
+          this.$router.push("/");
+        } else {
+          this.$message({
+            message: "添加成功",
+            type: "success"
+          });
+          this.$router.push("/cart");
+        }
+      });
+    },
+    load() {
+      this.axios
+        .get("/detail")
+        .then(res => {
+          console.log(res.data.data);
+          this.game = res.data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
       this.num = this.$route.fullPath.slice(8);
     }
   }

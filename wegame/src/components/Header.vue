@@ -18,14 +18,20 @@
     </div>
     <div class="header_nav">
       <ul class="header_nav_hd">
-        <li>精选</li>
+        <router-link to="List">
+          <li>精选</li>
+        </router-link>
         <router-link to="List">
           <li>所有游戏</li>
         </router-link>
       </ul>
       <ul class="header_nav_bd">
-        <li>大型网游</li>
-        <li>单机游戏</li>
+        <router-link to="List">
+          <li>大型网游</li>
+        </router-link>
+        <router-link to="List">
+          <li>单机游戏</li>
+        </router-link>
       </ul>
       <div class="header_nav_ft">
         <input type="text" />
@@ -55,8 +61,8 @@ export default {
     login() {
       this.loginS = !this.loginS;
     },
-    home(){
-      this.$router.push("/")
+    home() {
+      this.$router.push("/");
     }
   },
   components: {
@@ -201,7 +207,7 @@ header > .header_head > .header_ft > span {
   top: 3px;
   left: 11px;
 }
-a{
-  text-decoration: none
+a {
+  text-decoration: none;
 }
 </style>

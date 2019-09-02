@@ -9,22 +9,22 @@
       <h3>热 门 标 签</h3>
       <ul>
         <li>
-          <a href="#">角色扮演</a>
+          <a href="javascript:;" :data-title="jsby" @click="search">角色扮演</a>
         </li>
         <li>
-          <a href="#">动作冒险</a>
+          <a href="javascript:;" :data-title="dzmx" @click="search">动作冒险</a>
         </li>
         <li>
-          <a href="#">MOBA</a>
+          <a href="javascript:;" :data-title="MOBA" @click="search">MOBA</a>
         </li>
         <li>
-          <a href="#">FPS</a>
+          <a href="javascript:;" :data-title="FPS" @click="search">FPS</a>
         </li>
         <li>
-          <a href="#">体育竞技</a>
+          <a href="javascript:;" :data-title="tyjj" @click="search">体育竞技</a>
         </li>
         <li>
-          <a href="#">休闲娱乐</a>
+          <a href="javascript:;" :data-title="xxyl">休闲娱乐</a>
         </li>
       </ul>
     </div>
@@ -33,7 +33,27 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      jsby: "角色扮演",
+      dzmx: "动作冒险",
+      MOBA: "MOBA",
+      FPS: "FPS",
+      tyjj: "体育竞技",
+      xxyl: "休闲娱乐",
+      list: []
+    };
+  },
+  methods: {
+    search(e) {
+      var title = e.target.dataset.title;
+      var obj = { title };
+      this.axios.get("/search", { params: obj }).then(res => {
+        this.list = res.data.data;
+        console.log(this.list);
+        this.$emit("bysearch", this.list);
+        this.$router.push("/List");
+      });
+    }
   }
 };
 </script>

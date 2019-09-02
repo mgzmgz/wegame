@@ -2,19 +2,19 @@
   <div>
     <MyHeader></MyHeader>
     <div class="box">
-      <div class="list">
+      <div class="list" v-for="(item,i) of this.list" :key="i">
         <div class="cb">
           <input type="checkbox" />
         </div>
-        <img src="../assets/picture/game/miaosikuaipao.jpg" alt />
-        <span class="pn">秒死</span>
-        <span>￥48</span>
+        <img :src="baseUrl+item.pic" alt />
+        <span class="pn">{{item.gname}}</span>
+        <span>￥{{item.price}}</span>
         <div class="icon">
-          <i class="el-icon-delete"></i>
+          <i class="el-icon-delete" @click="del" :data-cid="item.cid"></i>
         </div>
       </div>
       <div class="btn">
-        <button>确认购买</button>
+        <button @click="buy">确认购买</button>
       </div>
     </div>
   </div>
@@ -23,10 +23,50 @@
 import MyHeader from "../components/Header.vue";
 export default {
   data() {
-    return {};
+    return {
+      list: [],
+      baseUrl: "http://127.0.0.1:3000/"
+    };
   },
   components: {
     MyHeader: MyHeader
+  },
+  methods: {
+    buy(){
+       this.$message({
+            message: "购买成功",
+            type: "success"
+          });
+    },
+    del(e) {
+      var cid = e.target.dataset.cid;
+      var obj = { cid };
+      this.axios.get("/del", { params: obj }).then(res => {
+        if (res.data.code > 0) {
+          this.$message({
+            message: "删除成功",
+            type: "success"
+          });
+          this.cart();
+        }
+      });
+    },
+    cart() {
+      this.axios.get("/cart").then(res => {
+        if (res.data.code == -1) {
+          this.$message({
+            message: "请先登录",
+            type: "warning"
+          });
+          this.$router.push("/");
+        } else {
+          this.list = res.data.data;
+        }
+      });
+    }
+  },
+  created() {
+    this.cart();
   }
 };
 </script>
@@ -42,6 +82,8 @@ export default {
   border: 1px solid #555;
   border-radius: 5px;
   background: #fff9e4;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .box .list {
@@ -94,10 +136,7 @@ button {
   cursor: pointer;
 }
 .btn {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  margin-left: 365px;
-  margin-top: 4px;
+  float: right;
+  margin: 30px 0;
 }
 </style>

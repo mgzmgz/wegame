@@ -34,11 +34,13 @@ CREATE TABLE game_user(
 );
 
 -- 购物车
-CREATE TABLE game_shoppingcart(
-  sid INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT,                       #用户编号
-  product_id INT,                    #商品编号
-  is_checked BOOLEAN                 #是否已勾选，确定购买
+CREATE TABLE game_cart(
+   cid INT PRIMARY KEY AUTO_INCREMENT,  #购物车编号
+   uid INT,                             #用户编号
+   gid INT,                      #游戏编号
+   gname VARCHAR(32),                   #游戏名称  
+   price DECIMAL(4,2),                  #价格
+   pic VARCHAR(64)                      #图片路径   
 );
 
 

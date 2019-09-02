@@ -87,7 +87,6 @@ server.post("/login", (req, res) => {
     } else {
       req.session.uid = result[0].uid
       res.send({ code: 1, msg: "登录成功" })
-      console.log(res)
     }
   })
 })
@@ -96,6 +95,70 @@ server.post("/login", (req, res) => {
 server.get("/detail", (req, res) => {
   var sql = `SELECT * FROM game`
   pool.query(sql, (err, result) => {
+    if (err) throw err
+    if (result.length > 0) {
+      res.send({ code: 1, msg: "查询成功", data: result })
+    } else {
+      res.send({ code: -1, msg: "查询失败" })
+    }
+  })
+})
+
+//添加购物车
+server.get('/addcart', (req, res) => {
+  var uid = req.session.uid
+  if (!uid) {
+    res.send({ code: -1, msg: "请先登录" })
+    return
+  }
+  var gid = req.query.gid
+  var gname = req.query.gname
+  var price = req.query.price
+  var pic = req.query.pic
+  // var sql = "SELECT uid FROM game_cart WHERE uid=? AND gid=?"
+  var sql = `INSERT INTO game_cart VALUES(null,${uid},${gid},'${gname}',${price},'${pic}')`
+  pool.query(sql, (err, result) => {
+    if (err) throw err
+    res.send({ code: 1, msg: "添加成功" })
+  })
+})
+
+
+
+
+//查看购物车
+server.get("/cart", (req, res) => {
+  var uid = req.session.uid
+  if (!uid) {
+    res.send({ code: -1, msg: "请登录" })
+    return
+  }
+  var sql = "SELECT cid,uid,gid,gname,price,pic FROM game_cart WHERE uid=?"
+  pool.query(sql, [uid], (err, result) => {
+    if (err) throw err
+    res.send({ code: 1, msg: "查询成功", data: result })
+  })
+})
+
+//删除购物车
+server.get("/del", (req, res) => {
+  var cid = req.query.cid
+  var sql = "DELETE FROM game_cart WHERE cid=?"
+  pool.query(sql, [cid], (err, result) => {
+    if (err) throw err
+    if (result.affectedRows > 0) {
+      res.send({ code: 1, msg: "删除成功" })
+    } else {
+      res.send({ code: -1, msg: "删除失败" })
+    }
+  })
+})
+
+//分类查询
+server.get("/search", (req, res) => {
+  var title = req.query.title
+  var sql = `SELECT * FROM game WHERE title=?`
+  pool.query(sql, [title], (err, result) => {
     if (err) throw err
     if (result.length > 0) {
       res.send({ code: 1, msg: "查询成功", data: result })
