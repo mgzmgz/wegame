@@ -21,7 +21,7 @@
       </ul>
       <ul>
         <li>发行平台</li>
-        <li>Game</li>
+        <li>WeGame</li>
       </ul>
       <p v-if="game[num].price==0">免费</p>
       <p v-else-if="game[num].price!=0">￥{{game[num].price}}</p>
@@ -149,6 +149,11 @@ export default {
             type: "warning"
           });
           this.$router.push("/");
+        } else if (res.data.code == -2) {
+          this.$message({
+            message: "重复添加",
+            type: "warning"
+          });
         } else {
           this.$message({
             message: "添加成功",

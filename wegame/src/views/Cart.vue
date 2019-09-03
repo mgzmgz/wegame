@@ -3,9 +3,6 @@
     <MyHeader></MyHeader>
     <div class="box">
       <div class="list" v-for="(item,i) of this.list" :key="i">
-        <div class="cb">
-          <input type="checkbox" />
-        </div>
         <img :src="baseUrl+item.pic" alt />
         <span class="pn">{{item.gname}}</span>
         <span>￥{{item.price}}</span>
@@ -32,11 +29,11 @@ export default {
     MyHeader: MyHeader
   },
   methods: {
-    buy(){
-       this.$message({
-            message: "购买成功",
-            type: "success"
-          });
+    buy() {
+      this.$message({
+        message: "购买成功",
+        type: "success"
+      });
     },
     del(e) {
       var cid = e.target.dataset.cid;
@@ -97,14 +94,7 @@ export default {
   width: 130px;
   height: 75px;
   display: block;
-  margin-left: -300px;
-}
-.box .cb {
-  width: 80px;
-  height: 75px;
-}
-.box .cb input {
-  margin: 33px;
+  margin-left: 15px;
 }
 
 .box span {

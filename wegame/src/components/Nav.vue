@@ -24,7 +24,7 @@
           <a href="javascript:;" :data-title="tyjj" @click="search">体育竞技</a>
         </li>
         <li>
-          <a href="javascript:;" :data-title="xxyl">休闲娱乐</a>
+          <a href="javascript:;" :data-title="xxyl" @click="search">休闲娱乐</a>
         </li>
       </ul>
     </div>

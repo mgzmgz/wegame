@@ -115,11 +115,19 @@ server.get('/addcart', (req, res) => {
   var gname = req.query.gname
   var price = req.query.price
   var pic = req.query.pic
-  // var sql = "SELECT uid FROM game_cart WHERE uid=? AND gid=?"
+
   var sql = `INSERT INTO game_cart VALUES(null,${uid},${gid},'${gname}',${price},'${pic}')`
   pool.query(sql, (err, result) => {
     if (err) throw err
-    res.send({ code: 1, msg: "添加成功" })
+    var sql = `SELECT gid,count(*) as count from game_cart group by gid having count>0`
+    pool.query(sql, (err, result) => {
+      if (err) throw err
+      if (result[0].count > 1) {
+        res.send({ code: -2, msg: "重复添加", data: result })
+      } else {
+        res.send({ code: 1, msg: "添加成功" })
+      }
+    })
   })
 })
 

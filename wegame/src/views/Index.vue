@@ -20,7 +20,7 @@
       </div>
       <div class="list">
         <ul>
-          <li :style="{marginLeft: leftIndex+'px'}">
+          <li :style="{marginLeft: leftIndex+'px'}" style="transition:all 0.4s">
             <router-link to="Detail?4">
               <img :src="baseUrl+'picture/y/baoleizhiye.jpg'" alt />
             </router-link>

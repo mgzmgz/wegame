@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <my-header></my-header>
-    <my-nav></my-nav>
+    <my-nav v-on:bysearch="bysearch"></my-nav>
     <div class="body_game">
       <ul>
         <li v-for="(item,i) of game.slice(n1,n2)" :key="i">
@@ -47,7 +47,8 @@ export default {
       n1: 0,
       n2: 10,
       num: 1,
-      pto: ""
+      pto: "",
+      list: []
     };
   },
   components: {
@@ -56,8 +57,13 @@ export default {
   },
   mounted() {
     this.load();
+    this.bysearch(list);
   },
   methods: {
+    bysearch(list) {
+      this.game = list;
+      this.pto = Math.ceil(this.game.length / 10);
+    },
     load() {
       this.axios
         .get()
