@@ -324,11 +324,9 @@ export default {
     this.axios
       .get()
       .then(res => {
-        console.log(res.data.data);
         this.game = res.data.data;
       })
       .catch(err => {
-        console.log(err);
       });
   }
 };

@@ -167,11 +167,9 @@ export default {
       this.axios
         .get("/detail")
         .then(res => {
-          console.log(res.data.data);
           this.game = res.data.data;
         })
         .catch(err => {
-          console.log(err);
         });
       this.num = this.$route.fullPath.slice(8);
     }

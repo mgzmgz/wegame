@@ -120,7 +120,6 @@ export default {
             type: "success"
           });
           this.show = !this.show;
-          console.log(res);
         }
       });
     },

@@ -68,12 +68,10 @@ export default {
       this.axios
         .get()
         .then(res => {
-          console.log(res.data.data);
           this.game = res.data.data;
           this.pto = Math.ceil(this.game.length / 10);
         })
         .catch(err => {
-          console.log(err);
         });
     },
     right() {

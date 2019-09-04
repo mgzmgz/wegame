@@ -49,7 +49,6 @@ export default {
       var obj = { title };
       this.axios.get("/search", { params: obj }).then(res => {
         this.list = res.data.data;
-        console.log(this.list);
         this.$emit("bysearch", this.list);
         this.$router.push("/List");
       });
